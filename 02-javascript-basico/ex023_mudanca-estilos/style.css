@@ -1,0 +1,36 @@
+.blue {
+    background-color: #0000FF;
+    color: #FFF;
+}
+
+.red {
+    background-color: #FF0000;
+    color: #FFF;
+}
+
+.green {
+    background-color: #00FF00;
+    color: #000;
+}
+
+.titleOne {
+    font-size: 70px;
+    text-align: center;
+}
+
+.text {
+    display: block;
+    padding: 15px 30px;
+    font-size: 25px;
+    margin-top: 20px;
+}
+
+
+
+#phone {
+    display: none;
+}
+
+#hide {
+    display: none;
+}
