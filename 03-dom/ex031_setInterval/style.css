@@ -1,0 +1,12 @@
+#box {
+    width: 300px;
+    height: 300px;
+}
+
+.green {
+    background-color: #0F0;
+}
+
+.red {
+    background-color: #F00;
+}
