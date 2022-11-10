@@ -1,4 +1,4 @@
-let item = document.querySelector('#exemple');
+let item = document.querySelector('div');
 
 function green() {
     removed();
@@ -17,4 +17,9 @@ function blue() {
 
 function removed() {
     item.classList.remove('green', 'red', 'blue');
+}
+
+function biggest() {
+    item.classList.toggle('bigger');
+    console.log(item)
 }

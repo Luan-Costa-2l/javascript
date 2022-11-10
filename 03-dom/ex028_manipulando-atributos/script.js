@@ -13,3 +13,31 @@ function getTech() {
     let tech = document.querySelector('.image').getAttribute('data-tech');
     alert('O aparelho é: ' + tech);
 }
+
+
+function txt() {
+    const input = document.querySelector('.input');
+
+    console.log(input.getAttribute('type'));
+
+    // verifica há o atributo na tag
+    console.log(input.hasAttribute('placeholder'));
+
+    // alterando o atributo type password para text
+    input.setAttribute('type', 'text');
+}
+
+
+function yn() {
+    const input = document.querySelector('.input');
+    const button = document.querySelector('.button');
+
+
+    if(input.getAttribute('type') == 'password') {
+        input.setAttribute('type', 'text');
+        button.innerHTML = 'Ocultar senha';
+    } else {
+        input.setAttribute('type', 'password');
+        button.innerHTML = 'Mostrar senha';
+    }
+}
