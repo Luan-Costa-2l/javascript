@@ -1,0 +1,7 @@
+- Programação Orientada a Objetos (POO - OOP)
+- Programação Procedural
+- Programação Funcional (PF - FP) (Functional  Programming)
+
+
+- CLASSES
+- FUNÇÕES/OBJETOS
