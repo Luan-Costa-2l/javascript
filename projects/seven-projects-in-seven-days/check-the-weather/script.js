@@ -1,58 +1,55 @@
-document.querySelector('.busca').addEventListener('submit', async (event) => {
+const c = (el) => document.querySelector(el);
+
+const handlerRequest = async (event) => {
     event.preventDefault();
 
-    let input = document.querySelector('#searchInput').value;
-    
+    let input = c('input').value;
 
-    if(input !== '') {
-        clearInfo();
-        showWarning('carregando...');
+    if(input) {
+        showWarning('Carregando...');
 
-        let url = `https://api.openweathermap.org/data/2.5/weather?q=${encodeURI(input)}&appid=89a6eb5ee47e192574b88e443dc43e40&units=metric&lang=pt_br`;
+        let url = `https://api.openweathermap.org/data/2.5/weather?q=${encodeURI(input)}&appid=89a6eb5ee47e192574b88e443dc43e40&lang=pt_br&units=metric`;
 
-        let results = await fetch(url);
-        let json = await results.json();
+        let response = await fetch(url);
+        let json = await response.json();
+        showWarning('')
 
-        if(json.cod === 200) {
+        if(json.cod == 200) {
             showInfo({
                 name: json.name,
                 country: json.sys.country,
                 temp: json.main.temp,
                 tempIcon: json.weather[0].icon,
                 windSpeed: json.wind.speed,
-                windAngle: json.wind.deg
+                windDeg: json.wind.deg
             });
         } else {
-            clearInfo();
-            showWarning('Não encontramos esta localização');
+            showWarning('Não encontramos esta localização.');
         }
     } else {
-        clearInfo();
+        clearInfo()
     }
-});
-
-function showInfo(json) {
-    showWarning('');
-
-    document.querySelector('.titulo').innerHTML = `${json.name}, ${json.country}`;
-    document.querySelector('.tempInfo').innerHTML = `${json.temp} <sup>ºC</sup>`;
-    document.querySelector('.ventoInfo').innerHTML = `${json.windSpeed} <span>Km/h</span>`;
-
-    document.querySelector('.temp img').src = `http://openweathermap.org/img/wn/${json.tempIcon}@2x.png`;
-    // outra maneira seria:
-    // document.querySelector('.temp img').setAttribute('src', `http://openweathermap.org/img/wn/${json.tempIcon}@2x.png`);
-
-    document.querySelector('.ventoPonto').style.transform = `rotate(${json.windAngle - 90}deg)`;
-
-    document.querySelector('.resultado').style.display = 'block';
 }
 
-function clearInfo() {
+const showInfo = (json) => {
+    c('h2').innerHTML = `${json.name}, ${json.country}`;
+    c('.tempInfo').innerHTML = `${json.temp.toFixed(2)} <sup>°C</sup>`;
+    c('.windInfo').innerHTML = `${json.windSpeed} <span>Km/h</span>`;
+
+    c('.temp img').setAttribute('src', `http://openweathermap.org/img/wn/${json.tempIcon}@2x.png`);
+
+    c('.windArea .windPoint').style.transform = `rotate(${json.windDeg - 90}deg)`;
+
+    c('.result').style.display = 'block';
+}
+
+const clearInfo = () => {
     showInfo('');
-    document.querySelector('.resultado').style.display = 'none';
 }
 
-function showWarning(msg) {
-    document.querySelector('.aviso').innerHTML = msg;
+const showWarning = (msg) => {
+    c('.result').style.display = 'none';
+    c('.warning').innerHTML = msg;
 }
 
+c('form').addEventListener('submit', handlerRequest);
