@@ -8,6 +8,15 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div class="models" style="display: none;">
+        <li class="todo__listItem">
+            <label class="todo__listCheck">
+                <input class="input" type="checkbox" name="done">
+                <div class="check">&#10003;</div>
+            </label>
+            <span class="todo__listText">exemple</span>
+        </li>
+    </div>
     <div class="todo">
         <h1 class="todo__title">Lista de Tarefas</h1>
 
@@ -17,14 +26,10 @@
         </div>
 
         <ul class="todo__list">
-            <li class="todo__listItem">
-                <label class="todo__listCheck">
-                    <input class="input" type="checkbox" name="done">
-                    <div class="check">&#10003;</div>
-                </label>
-                <span class="todo__listText">exemple</span>
-            </li>
+            
         </ul>
     </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
