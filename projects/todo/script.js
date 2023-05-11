@@ -21,4 +21,20 @@ const setTaskOnScreen = () => {
     }
 }
 
+const doneTaskListener = (item) => {
+    const input = item.querySelector('.input');
+    const text = item.querySelector('.todo__listText');
+    input.addEventListener('change', (event) => {
+        text.style.textDecoration = event.target.checked ? 'line-through' : 'none';
+    });
+}
+
+const addDoneTaskListener = () => {
+    document.querySelectorAll('.todo__listItem').forEach(item => doneTaskListener(item));
+}
+
+document.querySelector('.todo__searchInput').addEventListener('keyup', (event) => {
+    if (event.code === 'Enter') setTaskOnScreen();
+});
+
 document.querySelector('.todo__searchIcon').addEventListener('click', setTaskOnScreen);
