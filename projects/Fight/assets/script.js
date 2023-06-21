@@ -1,5 +1,12 @@
 const char = new Knight('Luan');
 const monster = new LittleMonter();
 
-console.log(char);
-console.log(monster)
+
+const stage = new Stage(
+    char,
+    monster,
+    document.querySelector('#char'),
+    document.querySelector('#monster')
+);
+
+stage.start();
